@@ -198,8 +198,41 @@
 
             // 4 TryDequeue
             bool safe = printer.TryDequeue(out string doc);
-            Console.WriteLine($"TryDequeue: {safe} \nDocument: {doc}"); 
+            Console.WriteLine($"TryDequeue: {safe} \nDocument: {doc}");
             #endregion
+
+
+            #region Exercise 6: Browser History (Undo)
+            Console.WriteLine();
+            Console.WriteLine("===============");
+            Console.WriteLine("----Browser History----");
+            // 1 create and push
+            Stack<string> urls = new Stack<string>();
+            urls.Push("google.com");
+            urls.Push("github.com");
+            urls.Push("stackoverflow.com");
+            urls.Push("youtube.com");
+            urls.Push("claude.ai");
+
+            // 2 Use peek
+            Console.WriteLine($"Current URL : {urls.Peek()}");
+
+            // pop 3 times 
+            while (urls.Count >= 3)
+            {
+                Console.WriteLine($"Going Back : {urls.Pop()}");
+            }
+
+            // 4 current page
+            Console.WriteLine($"Current URL : {urls.Peek()}");
+
+
+            // 5 Trypop
+            Stack<int> empty = new Stack<int>();
+            empty.TryPop(out int val);
+            Console.WriteLine($"TryPop: {val}"); 
+            #endregion
+
         }
     }
 }
