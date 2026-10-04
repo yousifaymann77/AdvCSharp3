@@ -5,6 +5,7 @@
         static void Main(string[] args)
         {
             #region  1: Student Grade Manager
+            Console.WriteLine("---------Grade Manager-----------");
             // 1 - 2 Create list and print the first and last element
             List<int> grades = new List<int> { 85, 92, 78, 95, 88, 70, 100, 65 };
             Printer.PrintCollection("Grades", grades);
@@ -37,6 +38,9 @@
 
 
             #region Exercise 2: Leaderboard
+            Console.WriteLine();
+            Console.WriteLine("====================");
+            Console.WriteLine("-----Leader Board----");
             // 1-2 Create and print
             SortedDictionary<int, string> scores = new SortedDictionary<int, string>()
             {
@@ -67,9 +71,59 @@
 
             // 6 Remove player with score 200
             scores.Remove(200);
-            Printer.PrintCollection("Scores after removing score 200", scores); 
+            Printer.PrintCollection("Scores after removing score 200", scores);
             #endregion
 
+
+            #region Exercise 3: Phone Book
+            Console.WriteLine();
+            Console.WriteLine("===================");
+            Console.WriteLine("----Phone Book----");
+            // 1 Create collection
+            Dictionary<string, string> contacts = new Dictionary<string, string>()
+            {
+                {"Yousif" , "01064079131" },
+                {"Malek", "01001146667"},
+                {"Ahmed", "01078534121" },
+                {"Mohamed", "01248723878" }
+            };
+
+            // 2 Add new contact
+            contacts["Yassin"] = "01064079141";
+
+            Printer.PrintCollection("Contacts", contacts);
+
+
+            // 3 Adding duplicateb using Add
+            try
+            {
+                contacts.Add("Ahmed", "01078534121");
+
+            }
+            catch
+            {
+                Console.WriteLine("Contact Already Exists");
+            }
+
+
+            // 4 Adding duplicate using TryAdd
+            Console.WriteLine($"Contact Added? : {contacts.TryAdd("Ahmed", "01078534121")}");
+
+
+            // 5 search for a contact !Exists
+            Console.WriteLine(contacts.ContainsKey("Rola"));
+
+
+            // 6 Fallback
+            Console.WriteLine(contacts.GetValueOrDefault("Yousif", "Not Found"));
+            Console.WriteLine(contacts.GetValueOrDefault("Rola", "Not Found"));
+
+            // 7 print 
+
+            Console.Write(string.Join(", ", contacts.Keys));
+            Console.WriteLine();
+            Console.Write(string.Join(", ", contacts.Values)); 
+            #endregion
         }
     }
 }
