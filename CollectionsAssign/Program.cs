@@ -122,7 +122,47 @@
 
             Console.Write(string.Join(", ", contacts.Keys));
             Console.WriteLine();
-            Console.Write(string.Join(", ", contacts.Values)); 
+            Console.Write(string.Join(", ", contacts.Values));
+            #endregion
+
+
+            #region Exercise 4: Unique Email Validator
+            Console.WriteLine();
+            Console.WriteLine("=============");
+            Console.WriteLine("----Email Validator----");
+            // 1-2 Create HashSet and add emails
+            HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            emails.Add("ahmed@test.com");
+            emails.Add("AHMED@test.com");
+            emails.Add("sara@test.com");
+            emails.Add("Sara@Test.Com");
+
+
+            // 2 print count 
+            Console.WriteLine($"Count : {emails.Count}");
+            // count prints 2 because we used StringComparer.OrdinalIgnoreCase so the Hashset ignores upper and lower case letters when checking for duplicates.
+
+
+            // 4 create sets 
+            HashSet<int> A = new HashSet<int>() { 1, 2, 3, 4, 5 };
+            HashSet<int> B = new HashSet<int>() { 4, 5, 6, 7, 8 };
+
+            // 5 results
+            HashSet<int> union = new HashSet<int>(A);
+            union.UnionWith(B);
+            Console.WriteLine($"Union: {string.Join(", ", union)}");
+
+            HashSet<int> intersection = new HashSet<int>(A);
+            intersection.IntersectWith(B);
+            Console.WriteLine($"Intersection: {string.Join(", ", intersection)}");
+
+            HashSet<int> except = new HashSet<int>(A);
+            except.ExceptWith(B);
+            Console.WriteLine($"Except: {string.Join(", ", except)}");
+
+            // 6 Subset 
+            HashSet<int> check = new HashSet<int>() { 1, 2 };
+            Console.WriteLine($"[1 , 2] is subset of A ? {check.IsSubsetOf(A)}"); 
             #endregion
         }
     }
