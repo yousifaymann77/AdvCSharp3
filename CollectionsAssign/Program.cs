@@ -32,10 +32,43 @@
 
             // 8 Convert the list of grades to a list of strings
             List<string> strings = grades.ConvertAll(x => $"Grade : {x}");
-            Printer.PrintCollection("Numbers String ", strings); 
+            Printer.PrintCollection("Numbers String ", strings);
             #endregion
 
 
+            #region Exercise 2: Leaderboard
+            // 1-2 Create and print
+            SortedDictionary<int, string> scores = new SortedDictionary<int, string>()
+            {
+                {500 ,"Ahmed"},
+                {200 ,"Sara"},
+                {800 ,"Ali"},
+                {350 ,"Mona"}
+            };
+            Printer.PrintCollection("Scores", scores);
+
+            // 3 Access first key and value
+            Console.WriteLine($"Firts Key : {scores.Keys.First()}");
+            Console.WriteLine($"First Vlaue : {scores.Values.First()}");
+
+            // 4 check for 500
+            Console.WriteLine($"Check for score 500 : {scores.ContainsKey(500)}");
+
+            // 5 get player with 999
+            if (scores.TryGetValue(999, out string player))
+            {
+                Console.WriteLine($"Player with score 999 : {player}");
+            }
+            else
+            {
+                Console.WriteLine("Player with score 999 not found.");
+            }
+
+
+            // 6 Remove player with score 200
+            scores.Remove(200);
+            Printer.PrintCollection("Scores after removing score 200", scores); 
+            #endregion
 
         }
     }
