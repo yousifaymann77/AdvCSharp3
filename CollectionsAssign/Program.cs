@@ -162,7 +162,43 @@
 
             // 6 Subset 
             HashSet<int> check = new HashSet<int>() { 1, 2 };
-            Console.WriteLine($"[1 , 2] is subset of A ? {check.IsSubsetOf(A)}"); 
+            Console.WriteLine($"[1 , 2] is subset of A ? {check.IsSubsetOf(A)}");
+            #endregion
+
+
+            #region Exercise 5: Print Queue Simulator
+            Console.WriteLine();
+            Console.WriteLine("===============");
+            Console.WriteLine("----Print Simulator----");
+            Queue<String> printer = new Queue<string>();
+            printer.Enqueue("Report.pdf");
+            printer.Enqueue("Invoice.pdf");
+            printer.Enqueue("Letter.docx");
+            printer.Enqueue("Ressume.pdf");
+            printer.Enqueue("Photo.jpg");
+
+            // 1 print contents and count 
+            foreach (var value in printer)
+            {
+                Console.WriteLine(string.Join(", ", value));
+            }
+            Console.WriteLine($"count : {printer.Count}");
+
+
+            // 2 use peek
+            Console.WriteLine($"using Peek : {printer.Peek()}");
+
+            // 3 Dequeue and print until empty
+            while (printer.Count > 0)
+            {
+                Console.WriteLine($"Printing : {printer.Dequeue()}");
+            }
+            ;
+            Console.WriteLine($"Count After Dequeue: {printer.Count}");
+
+            // 4 TryDequeue
+            bool safe = printer.TryDequeue(out string doc);
+            Console.WriteLine($"TryDequeue: {safe} \nDocument: {doc}"); 
             #endregion
         }
     }
